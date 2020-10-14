@@ -2,113 +2,73 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  *
+ * Generated with the UI Kitten template
+ * https://github.com/akveo/react-native-ui-kitten
+ *
+ * Documentation: https://akveo.github.io/react-native-ui-kitten/docs
+ *
  * @format
- * @flow strict-local
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import Login from './src/components/login';
+import Welcome from './src/components/welcome';
+import SignUp from './src/components/signup';
+import SignUpStep from './src/components/signupstep';
+import LoginInfo from './src/components/logininfo';
+import Home from './src/components/home';
+import Contact from './src/components/contact';
+import 'react-native-gesture-handler';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+const Stack = createStackNavigator();
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+class App extends React.Component {
+  render() {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="welcome">
+          <Stack.Screen
+            name="welcome"
+            component={Welcome}
+            options={{title: 'Welcome'}}
+          />
+          <Stack.Screen
+            name="login"
+            component={Login}
+            options={{title: 'Login'}}
+          />
+          <Stack.Screen
+            name="signup"
+            component={SignUp}
+            options={{title: 'Sign up'}}
+          />
+          <Stack.Screen
+            name="logininfo"
+            component={LoginInfo}
+            options={{title: 'Login info'}}
+          />
+          <Stack.Screen
+            name="signupstep"
+            component={SignUpStep}
+            options={{title: 'Sign up'}}
+          />
+          <Stack.Screen
+            name="home"
+            component={Home}
+            options={{title: 'Home'}}
+          />
+          <Stack.Screen
+            name="contact"
+            component={Contact}
+            options={{title: 'Contact'}}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
+}
 
 export default App;
